@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LingoLeaf – Làm bài tập</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-shell">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">&gt;</span>
+      <span>LingoLeaf</span>
+    </a>
+    <div class="header-actions">
+      <span class="header-badge" id="userBadge"></span>
+      <button class="reset-button" id="signOutBtn" type="button">Đăng xuất</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="grader" id="exercisePanel" hidden>
+      <div class="grader-heading">
+        <div>
+          <p class="eyebrow">BÀI TẬP DỊCH</p>
+          <h2 id="exerciseTitle">—</h2>
+          <p>Dịch câu bên dưới và nộp bài để nhận điểm ngay.</p>
+        </div>
+        <div class="score-ring" id="scoreRing" aria-label="Điểm">
+          <strong id="scoreValue">—</strong>
+          <span>/100</span>
+        </div>
+      </div>
+
+      <div class="grader-field">
+        <label>Câu cần dịch</label>
+        <div class="prompt-box" id="exercisePrompt">—</div>
+      </div>
+
+      <div class="grader-field">
+        <label for="studentAnswer">Bài làm của bạn</label>
+        <textarea id="studentAnswer" maxlength="5000" spellcheck="true" placeholder="Nhập bản dịch của bạn..."></textarea>
+      </div>
+
+      <div class="grading-result" id="gradingResult" hidden data-tier="">
+        <div class="result-summary">
+          <span class="result-badge" data-result-badge>Result</span>
+          <strong data-result-title></strong>
+          <p data-result-message></p>
+        </div>
+        <div class="feedback-grid">
+          <div>
+            <span>Từ cần ôn</span>
+            <p data-missing-words>—</p>
+          </div>
+          <div>
+            <span>Từ thừa</span>
+            <p data-extra-words>—</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grader-footer">
+        <p id="graderStatus" role="status" aria-live="polite">
+          Chữ hoa, dấu câu và khoảng trắng thừa không ảnh hưởng điểm.
+        </p>
+        <div class="grader-actions">
+          <button class="reset-button" id="retryBtn" type="button">Làm lại</button>
+          <button class="translate-button" id="submitBtn" type="button">
+            <span>Nộp bài</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 4 4L19 6" /></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="grader" id="errorPanel" hidden>
+      <p class="empty-state error-text" id="errorMessage"></p>
+      <a class="translate-button inline-link" href="student.html">Về trang học viên</a>
+    </section>
+  </main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/auth.js"></script>
+<script src="js/exercise.js"></script>
+</body>
+</html>

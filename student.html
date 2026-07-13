@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LingoLeaf – Học viên</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-shell">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">&gt;</span>
+      <span>LingoLeaf</span>
+    </a>
+    <div class="header-actions">
+      <span class="header-badge" id="userBadge"></span>
+      <button class="reset-button" id="signOutBtn" type="button">Đăng xuất</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero--compact">
+      <p class="eyebrow">HỌC VIÊN</p>
+      <h1>Luyện dịch <em>mỗi ngày</em></h1>
+      <p class="hero-copy">Mở link bài tập giáo viên gửi, hoặc xem lại các bài đã nộp.</p>
+    </section>
+
+    <section class="grader">
+      <h2 class="section-title">Mở bài tập bằng link</h2>
+      <p class="panel-copy">Dán link bài tập từ giáo viên vào đây:</p>
+      <form id="openLinkForm" class="share-row">
+        <input id="exerciseLinkInput" type="url" required placeholder="https://.../exercise.html?id=..." />
+        <button class="translate-button" type="submit">Mở</button>
+      </form>
+    </section>
+
+    <section class="grader">
+      <h2 class="section-title">Bài đã nộp</h2>
+      <div id="historyList" class="submission-list">
+        <p class="empty-state">Đang tải...</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/auth.js"></script>
+<script src="js/student.js"></script>
+</body>
+</html>

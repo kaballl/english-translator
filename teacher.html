@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LingoLeaf – Bảng giáo viên</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-shell">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">&gt;</span>
+      <span>LingoLeaf</span>
+    </a>
+    <div class="header-actions">
+      <span class="header-badge" id="userBadge"></span>
+      <button class="reset-button" id="signOutBtn" type="button">Đăng xuất</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero--compact">
+      <p class="eyebrow">GIÁO VIÊN</p>
+      <h1>Tạo bài tập <em>dịch</em></h1>
+      <p class="hero-copy">Tạo bài, chia sẻ link cho học viên, xem điểm và bài nộp.</p>
+    </section>
+
+    <section class="grader">
+      <h2 class="section-title">Tạo bài tập mới</h2>
+
+      <form id="createExerciseForm" class="stack-form">
+        <label for="exerciseTitle">Tiêu đề bài</label>
+        <input id="exerciseTitle" type="text" required maxlength="200" placeholder="Bài 1: Giới thiệu bản thân" />
+
+        <label for="exercisePrompt">Câu / đoạn cần dịch</label>
+        <textarea id="exercisePrompt" required maxlength="5000" placeholder="Nhập câu tiếng Anh hoặc tiếng Việt cần dịch..."></textarea>
+
+        <label for="exerciseAnswer">Đáp án mẫu (chỉ giáo viên thấy)</label>
+        <textarea id="exerciseAnswer" required maxlength="5000" placeholder="Nhập đáp án mẫu để chấm điểm..."></textarea>
+
+        <p class="form-error" id="createError" hidden></p>
+        <button class="translate-button" type="submit">Tạo bài tập</button>
+      </form>
+    </section>
+
+    <section class="grader" id="sharePanel" hidden>
+      <h2 class="section-title">Link chia sẻ cho học viên</h2>
+      <p class="panel-copy">Gửi link này cho học viên. Họ sẽ không thấy đáp án mẫu.</p>
+      <div class="share-row">
+        <input id="shareLink" type="text" readonly />
+        <button class="reset-button" id="copyLinkBtn" type="button">Copy</button>
+      </div>
+    </section>
+
+    <section class="grader">
+      <div class="section-header-row">
+        <h2 class="section-title">Bài tập của bạn</h2>
+        <button class="reset-button" id="refreshBtn" type="button">Làm mới</button>
+      </div>
+      <div id="exerciseList" class="exercise-list">
+        <p class="empty-state">Đang tải...</p>
+      </div>
+    </section>
+
+    <section class="grader" id="submissionsPanel" hidden>
+      <div class="section-header-row">
+        <h2 class="section-title" id="submissionsTitle">Bài nộp</h2>
+        <button class="reset-button" id="closeSubmissionsBtn" type="button">Đóng</button>
+      </div>
+      <div id="submissionsList" class="submission-list"></div>
+    </section>
+  </main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/auth.js"></script>
+<script src="js/teacher.js"></script>
+</body>
+</html>
