@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+        name="description"
+        content="Translation practice with automatic grading for language learners."
+    />
+
+    <title>LingoLeaf – Translation Practice</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap"
+        rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<div class="page-shell">
+
+<header class="site-header">
+
+    <a class="brand" href="#" aria-label="LingoLeaf - Home">
+        <span class="brand-mark" aria-hidden="true">></span>
+        <span>LingoLeaf</span>
+    </a>
+
+    <div class="header-badge">
+        <span class="status-dot" aria-hidden="true"></span>
+        English learning assistant
+    </div>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+    <p class="eyebrow">GRADED TRANSLATION PRACTICE</p>
+
+    <h1>
+        Understand clearly. Learn faster.<br />
+        <em>Speak confidently.</em>
+    </h1>
+
+    <p class="hero-copy">
+        Practice translation and receive instant scores and feedback based on a model answer.
+    </p>
+
+</section>
+
+<section class="grader" aria-labelledby="grader-title">
+
+<div class="grader-heading">
+
+    <div>
+
+        <p class="eyebrow">PRACTICE WITH INSTANT FEEDBACK</p>
+
+        <h2 id="grader-title">
+            Put your translation skills to the test
+        </h2>
+
+        <p>
+            Add a model answer, enter the student's response,
+            and get a score with feedback.
+        </p>
+
+    </div>
+
+    <div class="score-ring" id="scoreRing" aria-label="Student score">
+        <strong id="scoreValue">—</strong>
+        <span>/100</span>
+    </div>
+
+</div>
+
+<div class="answer-setup">
+
+    <div>
+
+        <label for="answerKey">
+            Model answer for grading
+        </label>
+
+        <p>
+            Enter the answer first, then hide it while the student completes the exercise.
+        </p>
+
+    </div>
+
+    <div class="answer-key-wrap">
+
+        <textarea
+            id="answerKey"
+            maxlength="5000"
+            spellcheck="true"
+            placeholder="Enter the prepared model answer..."
+        ></textarea>
+
+        <button
+            class="answer-visibility"
+            id="answerVisibilityButton"
+            type="button"
+            aria-pressed="false"
+            aria-label="Hide model answer"
+        >
+            Hide answer
+        </button>
+
+    </div>
+
+</div>
+
+<div class="grader-fields">
+
+    <div class="grader-field">
+
+        <label for="practicePrompt">
+            Text to translate
+        </label>
+
+        <textarea
+            id="practicePrompt"
+            maxlength="5000"
+            spellcheck="true"
+            placeholder="Enter the sentence or passage to translate..."
+        ></textarea>
+
+    </div>
+
+    <div class="grader-field">
+
+        <label for="studentAnswer">
+            Student's answer
+        </label>
+
+        <textarea
+            id="studentAnswer"
+            maxlength="5000"
+            spellcheck="true"
+            placeholder="Enter the student's translation here..."
+        ></textarea>
+
+    </div>
+
+</div>
+
+<div
+    class="grading-result"
+    id="gradingResult"
+    hidden
+>
+
+    <div class="result-summary">
+
+        <span class="result-badge" id="resultBadge">
+            Result
+        </span>
+
+        <strong id="resultTitle"></strong>
+
+        <p id="resultMessage"></p>
+
+    </div>
+
+    <div class="feedback-grid">
+
+        <div>
+
+            <span>Words to review</span>
+
+            <p id="missingWords">—</p>
+
+        </div>
+
+        <div>
+
+            <span>Extra words</span>
+
+            <p id="extraWords">—</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="grader-footer">
+
+    <p
+        id="graderStatus"
+        role="status"
+        aria-live="polite"
+    >
+        Capitalization, punctuation, and extra spacing do not affect the score.
+    </p>
+
+    <div class="grader-actions">
+
+        <button
+            class="reset-button"
+            id="resetGradeButton"
+            type="button"
+        >
+            Try again
+        </button>
+
+        <button
+            class="translate-button"
+            id="gradeButton"
+            type="button"
+        >
+            <span>Grade answer</span>
+
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+                <path d="M5 12 4 4L19 6" />
+            </svg>
+
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+<section class="learning-tip">
+
+    <div
+        class="tip-icon"
+        aria-hidden="true"
+    >
+
+        <svg viewBox="0 0 24 24">
+            <path d="M9 18h6m-5 3h4M8.5 14.5a7 7 0 1 1 7 0c-.9.7-1.5 1.6-1.5 2.5h-4c0-.9-.6-1.8-1.5-2.5Z"/>
+        </svg>
+
+    </div>
+
+    <div>
+
+        <p>LEARNING TIP</p>
+
+        <span>
+            Read your translation aloud and try using the sentence in a new context.
+        </span>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer class="site-footer">
+
+    <span>© 2026 LingoLeaf</span>
+
+    <span>
+        Learn every day. Improve every day.
+    </span>
+
+</footer>
+
+</div>
+
+<script src="app.js" defer></script>
+
+</body>
+</html>
