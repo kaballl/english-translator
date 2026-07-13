@@ -72,13 +72,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const fullName = document.getElementById("signupName").value.trim();
     const email = document.getElementById("signupEmail").value.trim();
     const password = document.getElementById("signupPassword").value;
-    const role = signupForm.querySelector('input[name="role"]:checked').value;
-
     const { error } = await supabase.auth.signUp({
       email,
       password,
       options: {
-        data: { full_name: fullName, role },
+        data: { full_name: fullName, role: "student" },
       },
     });
 
@@ -89,7 +87,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     signupSuccess.textContent =
-      "Đăng ký thành công! Kiểm tra email để xác nhận (nếu bật), sau đó đăng nhập.";
+      "Account created! Check your email to confirm (if enabled), then sign in.";
     signupSuccess.hidden = false;
     signupForm.reset();
   });

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const errorMessage = document.getElementById("errorMessage");
 
   if (!exerciseId) {
-    errorMessage.textContent = "Link bài tập không hợp lệ.";
+    errorMessage.textContent = "Invalid exercise link.";
     errorPanel.hidden = false;
     return;
   }
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   if (loadError || !exercises?.length) {
-    errorMessage.textContent = loadError?.message || "Không tìm thấy bài tập.";
+    errorMessage.textContent = loadError?.message || "Exercise not found.";
     errorPanel.hidden = false;
     return;
   }
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       missing: existing.missing_words,
       extra: existing.extra_words,
     });
-    graderStatus.textContent = `Đã nộp — Điểm: ${existing.score}/100. Nộp lại sẽ cập nhật điểm.`;
+    graderStatus.textContent = `Submitted — Score: ${existing.score}/100. Resubmitting will update your score.`;
   }
 
   document.getElementById("retryBtn").addEventListener("click", () => {
@@ -69,20 +69,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     scoreRing.dataset.tier = "";
     scoreRing.style.setProperty("--score-pct", 0);
     scoreValue.textContent = "—";
-    graderStatus.textContent = "Chữ hoa, dấu câu và khoảng trắng thừa không ảnh hưởng điểm.";
+    graderStatus.textContent = "Capitalization, punctuation, and extra spacing do not affect the score.";
     studentAnswer.focus();
   });
 
   submitBtn.addEventListener("click", async () => {
     const answer = studentAnswer.value.trim();
     if (!answer) {
-      graderStatus.textContent = "Vui lòng nhập bài làm trước khi nộp.";
+      graderStatus.textContent = "Please enter your answer before submitting.";
       studentAnswer.focus();
       return;
     }
 
     submitBtn.disabled = true;
-    graderStatus.textContent = "Đang chấm điểm...";
+    graderStatus.textContent = "Grading...";
 
     try {
       const response = await fetch("/api/grade", {
@@ -97,12 +97,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || "Không thể nộp bài");
+        throw new Error(result.error || "Could not submit answer");
       }
 
       setScoreRing(scoreRing, scoreValue, result.score);
       showGradingResult(gradingResult, result);
-      graderStatus.textContent = `Điểm: ${result.score}/100 — Đã lưu bài nộp.`;
+      graderStatus.textContent = `Score: ${result.score}/100 — Submission saved.`;
     } catch (err) {
       graderStatus.textContent = err.message;
     } finally {

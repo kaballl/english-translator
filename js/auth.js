@@ -140,7 +140,7 @@ function setupHeader(supabase, profile) {
   const signOutBtn = document.getElementById("signOutBtn");
 
   if (userBadge) {
-    const roleLabel = profile.role === "teacher" ? "Giáo viên" : "Học viên";
+    const roleLabel = profile.role === "teacher" ? "Teacher" : "Student";
     userBadge.textContent = `${profile.full_name || profile.email} · ${roleLabel}`;
   }
 

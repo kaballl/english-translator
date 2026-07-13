@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LingoLeaf – Đăng nhập</title>
+  <title>LingoLeaf – Sign in</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
@@ -20,70 +20,52 @@
 
   <main>
     <section class="auth-card">
-      <p class="eyebrow">ĐĂNG NHẬP</p>
-      <h1>Chào mừng trở lại</h1>
-      <p class="auth-subtitle">Đăng nhập để tiếp tục luyện dịch.</p>
+      <p class="eyebrow">SIGN IN</p>
+      <h1>Welcome back</h1>
+      <p class="auth-subtitle">Sign in to continue your translation practice.</p>
 
       <form id="loginForm" class="auth-form">
         <label for="loginEmail">Email</label>
         <input id="loginEmail" type="email" required autocomplete="email" placeholder="you@example.com" />
 
-        <label for="loginPassword">Mật khẩu</label>
+        <label for="loginPassword">Password</label>
         <input id="loginPassword" type="password" required autocomplete="current-password" placeholder="••••••••" />
 
         <p class="form-error" id="loginError" hidden></p>
 
-        <button class="translate-button auth-submit" type="submit">Đăng nhập</button>
+        <button class="translate-button auth-submit" type="submit">Sign in</button>
       </form>
 
       <p class="auth-switch">
-        Chưa có tài khoản?
-        <button type="button" class="link-button" id="showSignup">Đăng ký</button>
+        Don't have an account?
+        <button type="button" class="link-button" id="showSignup">Sign up</button>
       </p>
     </section>
 
     <section class="auth-card" id="signupCard" hidden>
-      <p class="eyebrow">ĐĂNG KÝ</p>
-      <h1>Tạo tài khoản</h1>
-      <p class="auth-subtitle">Chọn vai trò của bạn khi đăng ký.</p>
+      <p class="eyebrow">SIGN UP</p>
+      <h1>Create an account</h1>
+      <p class="auth-subtitle">Register as a student to complete exercises from your teacher.</p>
 
       <form id="signupForm" class="auth-form">
-        <label for="signupName">Họ tên</label>
-        <input id="signupName" type="text" required autocomplete="name" placeholder="Nguyễn Văn A" />
+        <label for="signupName">Full name</label>
+        <input id="signupName" type="text" required autocomplete="name" placeholder="Jane Smith" />
 
         <label for="signupEmail">Email</label>
         <input id="signupEmail" type="email" required autocomplete="email" placeholder="you@example.com" />
 
-        <label for="signupPassword">Mật khẩu</label>
-        <input id="signupPassword" type="password" required minlength="6" autocomplete="new-password" placeholder="Tối thiểu 6 ký tự" />
-
-        <fieldset class="role-picker">
-          <legend>Vai trò</legend>
-          <label class="role-option">
-            <input type="radio" name="role" value="student" checked />
-            <span>
-              <strong>Học viên</strong>
-              <small>Làm bài tập qua link giáo viên gửi</small>
-            </span>
-          </label>
-          <label class="role-option">
-            <input type="radio" name="role" value="teacher" />
-            <span>
-              <strong>Giáo viên</strong>
-              <small>Tạo bài tập và xem bài nộp</small>
-            </span>
-          </label>
-        </fieldset>
+        <label for="signupPassword">Password</label>
+        <input id="signupPassword" type="password" required minlength="6" autocomplete="new-password" placeholder="At least 6 characters" />
 
         <p class="form-error" id="signupError" hidden></p>
         <p class="form-success" id="signupSuccess" hidden></p>
 
-        <button class="translate-button auth-submit" type="submit">Đăng ký</button>
+        <button class="translate-button auth-submit" type="submit">Sign up</button>
       </form>
 
       <p class="auth-switch">
-        Đã có tài khoản?
-        <button type="button" class="link-button" id="showLogin">Đăng nhập</button>
+        Already have an account?
+        <button type="button" class="link-button" id="showLogin">Sign in</button>
       </p>
     </section>
   </main>

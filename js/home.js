@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   ctaRow.innerHTML = `
     <a class="translate-button" href="${profile.role === "teacher" ? "teacher.html" : "student.html"}">
-      Vào ${profile.role === "teacher" ? "bảng giáo viên" : "trang học viên"}
+      Go to ${profile.role === "teacher" ? "teacher dashboard" : "student page"}
     </a>
-    <button class="reset-button cta-secondary" id="homeSignOut" type="button">Đăng xuất</button>
+    <button class="reset-button cta-secondary" id="homeSignOut" type="button">Sign out</button>
   `;
 
   document.getElementById("homeSignOut").addEventListener("click", () => signOut(supabase));

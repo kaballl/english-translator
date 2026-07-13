@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LingoLeaf – Làm bài tập</title>
+  <title>LingoLeaf – Exercise</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
@@ -18,7 +18,7 @@
     </a>
     <div class="header-actions">
       <span class="header-badge" id="userBadge"></span>
-      <button class="reset-button" id="signOutBtn" type="button">Đăng xuất</button>
+      <button class="reset-button" id="signOutBtn" type="button">Sign out</button>
     </div>
   </header>
 
@@ -26,24 +26,24 @@
     <section class="grader" id="exercisePanel" hidden>
       <div class="grader-heading">
         <div>
-          <p class="eyebrow">BÀI TẬP DỊCH</p>
+          <p class="eyebrow">TRANSLATION EXERCISE</p>
           <h2 id="exerciseTitle">—</h2>
-          <p>Dịch câu bên dưới và nộp bài để nhận điểm ngay.</p>
+          <p>Translate the text below and submit to receive your score instantly.</p>
         </div>
-        <div class="score-ring" id="scoreRing" aria-label="Điểm">
+        <div class="score-ring" id="scoreRing" aria-label="Score">
           <strong id="scoreValue">—</strong>
           <span>/100</span>
         </div>
       </div>
 
       <div class="grader-field">
-        <label>Câu cần dịch</label>
+        <label>Text to translate</label>
         <div class="prompt-box" id="exercisePrompt">—</div>
       </div>
 
       <div class="grader-field">
-        <label for="studentAnswer">Bài làm của bạn</label>
-        <textarea id="studentAnswer" maxlength="5000" spellcheck="true" placeholder="Nhập bản dịch của bạn..."></textarea>
+        <label for="studentAnswer">Your answer</label>
+        <textarea id="studentAnswer" maxlength="5000" spellcheck="true" placeholder="Enter your translation here..."></textarea>
       </div>
 
       <div class="grading-result" id="gradingResult" hidden data-tier="">
@@ -54,11 +54,11 @@
         </div>
         <div class="feedback-grid">
           <div>
-            <span>Từ cần ôn</span>
+            <span>Words to review</span>
             <p data-missing-words>—</p>
           </div>
           <div>
-            <span>Từ thừa</span>
+            <span>Extra words</span>
             <p data-extra-words>—</p>
           </div>
         </div>
@@ -66,12 +66,12 @@
 
       <div class="grader-footer">
         <p id="graderStatus" role="status" aria-live="polite">
-          Chữ hoa, dấu câu và khoảng trắng thừa không ảnh hưởng điểm.
+          Capitalization, punctuation, and extra spacing do not affect the score.
         </p>
         <div class="grader-actions">
-          <button class="reset-button" id="retryBtn" type="button">Làm lại</button>
+          <button class="reset-button" id="retryBtn" type="button">Try again</button>
           <button class="translate-button" id="submitBtn" type="button">
-            <span>Nộp bài</span>
+            <span>Submit</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 4 4L19 6" /></svg>
           </button>
         </div>
@@ -80,7 +80,7 @@
 
     <section class="grader" id="errorPanel" hidden>
       <p class="empty-state error-text" id="errorMessage"></p>
-      <a class="translate-button inline-link" href="student.html">Về trang học viên</a>
+      <a class="translate-button inline-link" href="student.html">Back to student page</a>
     </section>
   </main>
 </div>

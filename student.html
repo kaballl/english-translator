@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LingoLeaf – Học viên</title>
+  <title>LingoLeaf – Student</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
@@ -18,30 +18,30 @@
     </a>
     <div class="header-actions">
       <span class="header-badge" id="userBadge"></span>
-      <button class="reset-button" id="signOutBtn" type="button">Đăng xuất</button>
+      <button class="reset-button" id="signOutBtn" type="button">Sign out</button>
     </div>
   </header>
 
   <main>
     <section class="hero hero--compact">
-      <p class="eyebrow">HỌC VIÊN</p>
-      <h1>Luyện dịch <em>mỗi ngày</em></h1>
-      <p class="hero-copy">Mở link bài tập giáo viên gửi, hoặc xem lại các bài đã nộp.</p>
+      <p class="eyebrow">STUDENT</p>
+      <h1>Practice translation <em>every day</em></h1>
+      <p class="hero-copy">Open an exercise link from your teacher, or review your past submissions.</p>
     </section>
 
     <section class="grader">
-      <h2 class="section-title">Mở bài tập bằng link</h2>
-      <p class="panel-copy">Dán link bài tập từ giáo viên vào đây:</p>
+      <h2 class="section-title">Open exercise by link</h2>
+      <p class="panel-copy">Paste the exercise link from your teacher here:</p>
       <form id="openLinkForm" class="share-row">
         <input id="exerciseLinkInput" type="url" required placeholder="https://.../exercise.html?id=..." />
-        <button class="translate-button" type="submit">Mở</button>
+        <button class="translate-button" type="submit">Open</button>
       </form>
     </section>
 
     <section class="grader">
-      <h2 class="section-title">Bài đã nộp</h2>
+      <h2 class="section-title">Submitted exercises</h2>
       <div id="historyList" class="submission-list">
-        <p class="empty-state">Đang tải...</p>
+        <p class="empty-state">Loading...</p>
       </div>
     </section>
   </main>

@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.getElementById("copyLinkBtn").addEventListener("click", async () => {
     await navigator.clipboard.writeText(shareLink.value);
-    document.getElementById("copyLinkBtn").textContent = "Đã copy!";
+    document.getElementById("copyLinkBtn").textContent = "Copied!";
     setTimeout(() => {
       document.getElementById("copyLinkBtn").textContent = "Copy";
     }, 2000);
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const id = copyBtn.dataset.copyLink;
       const link = `${window.location.origin}/exercise.html?id=${id}`;
       await navigator.clipboard.writeText(link);
-      copyBtn.textContent = "Đã copy!";
+      copyBtn.textContent = "Copied!";
       setTimeout(() => { copyBtn.textContent = "Copy link"; }, 2000);
       return;
     }
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   async function loadExercises() {
-    exerciseList.innerHTML = '<p class="empty-state">Đang tải...</p>';
+    exerciseList.innerHTML = '<p class="empty-state">Loading...</p>';
 
     const { data, error } = await supabase
       .from("exercises")
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     if (!data.length) {
-      exerciseList.innerHTML = '<p class="empty-state">Chưa có bài tập nào. Tạo bài đầu tiên ở trên.</p>';
+      exerciseList.innerHTML = '<p class="empty-state">No exercises yet. Create your first one above.</p>';
       return;
     }
 
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           </div>
           <div class="exercise-item-actions">
             <button class="reset-button" type="button" data-copy-link="${ex.id}">Copy link</button>
-            <button class="translate-button" type="button" data-view-submissions="${ex.id}" data-title="${escapeHtml(ex.title)}">Xem bài nộp</button>
+            <button class="translate-button" type="button" data-view-submissions="${ex.id}" data-title="${escapeHtml(ex.title)}">View submissions</button>
           </div>
         </article>`
       )
@@ -121,8 +121,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function loadSubmissions(supabase, exerciseId, title) {
     activeExerciseId = exerciseId;
     submissionsPanel.hidden = false;
-    submissionsTitle.textContent = `Bài nộp: ${title}`;
-    submissionsList.innerHTML = '<p class="empty-state">Đang tải...</p>';
+    submissionsTitle.textContent = `Submissions: ${title}`;
+    submissionsList.innerHTML = '<p class="empty-state">Loading...</p>';
 
     const { data, error } = await supabase.rpc("get_exercise_submissions", {
       exercise_uuid: exerciseId,
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     if (!data.length) {
-      submissionsList.innerHTML = '<p class="empty-state">Chưa có học viên nộp bài.</p>';
+      submissionsList.innerHTML = '<p class="empty-state">No submissions yet.</p>';
       return;
     }
 
@@ -148,8 +148,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           </div>
           <p class="submission-answer">${escapeHtml(s.answer)}</p>
           <div class="submission-meta">
-            <span>Thiếu: ${renderWordList(s.missing_words)}</span>
-            <span>Thừa: ${renderWordList(s.extra_words)}</span>
+            <span>Missing: ${renderWordList(s.missing_words)}</span>
+            <span>Extra: ${renderWordList(s.extra_words)}</span>
           </div>
           <time>${formatDate(s.submitted_at)}</time>
         </article>`
