@@ -15,7 +15,7 @@ function showConfigError() {
   const banner = document.createElement("div");
   banner.className = "config-banner";
   banner.innerHTML =
-    "<strong>Setup required:</strong> Copy <code>js/config.example.js</code> to <code>js/config.js</code> and add your Supabase URL + anon key. See <code>SETUP.md</code>.";
+    "<strong>Setup required:</strong> Add <code>SUPABASE_URL</code> and <code>SUPABASE_ANON_KEY</code> in Vercel → Settings → Environment Variables, then redeploy. For local dev, copy <code>js/config.example.js</code> to <code>js/config.js</code>.";
   document.body.prepend(banner);
 }
 
@@ -66,6 +66,43 @@ async function requireAuth(supabase, allowedRoles) {
 async function signOut(supabase) {
   await supabase.auth.signOut();
   window.location.href = "login.html";
+}
+
+function redirectAfterLogin(profile, returnTo) {
+  if (returnTo) {
+    window.location.href = returnTo;
+    return;
+  }
+  window.location.href = profile.role === "teacher" ? "teacher.html" : "student.html";
+}
+
+async function signInWithGoogle(supabase, returnTo) {
+  const redirectTo = new URL("login.html", window.location.origin);
+  if (returnTo) {
+    redirectTo.searchParams.set("returnTo", returnTo);
+  }
+
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: redirectTo.toString(),
+      queryParams: {
+        access_type: "offline",
+        prompt: "consent",
+      },
+    },
+  });
+
+  if (error) throw error;
+}
+
+async function resolveAuthRedirect(supabase, returnTo) {
+  const session = await getSession(supabase);
+  if (!session) return false;
+
+  const profile = await getProfile(supabase, session.user.id);
+  redirectAfterLogin(profile, returnTo);
+  return true;
 }
 
 function escapeHtml(str) {

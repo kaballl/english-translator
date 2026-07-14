@@ -7,6 +7,7 @@ const out = path.join(root, "public");
 const staticFiles = [
   "index.html",
   "login.html",
+  "reset-password.html",
   "teacher.html",
   "student.html",
   "exercise.html",
@@ -40,6 +41,10 @@ const url = process.env.SUPABASE_URL;
 const key = process.env.SUPABASE_ANON_KEY;
 
 if (!url || !key) {
+  if (process.env.VERCEL) {
+    console.error("Missing SUPABASE_URL or SUPABASE_ANON_KEY on Vercel.");
+    process.exit(1);
+  }
   console.warn("SUPABASE_URL or SUPABASE_ANON_KEY missing — writing placeholder config.");
 }
 
